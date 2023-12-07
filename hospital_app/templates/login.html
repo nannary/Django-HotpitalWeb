@@ -1,24 +1,33 @@
 {% extends "base.html" %} {% block content %}
-<div class="container my-3 d-flex justify-content-center align-items-center shadow rounded">
+<div
+  class="container my-3 d-flex justify-content-center align-items-center shadow rounded"
+>
   <div class="row">
     <div class="col">
       <form action="" method="POST">
         {%csrf_token%}
         <p></p>
-        <div class="form-group">
-          <h5>เข้าสู่ระบบที่นี่</h5>
-          <div class="mb-3">
-            <label for="username" class="form-label">username : </label>
-            <input type="text" name="username" id="username" required />
+        <h5>เข้าสู่ระบบที่นี่</h5>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
           </div>
-          <div class="mb-3">
-            <label for="pwd" class="form-label">password : </label>
-            <input type="password" name="pswd" id="pwd" required />
-          </div>
-          <button type="submit" class="btn btn-success shadow">
-            เข้าสู่ระบบ
-          </button>
         </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="pwd" name="pswd" />
+        </div>
+        <button type="submit" class="btn btn-dark">เข้าสู่ระบบ</button>
         <p><br /></p>
       </form>
     </div>

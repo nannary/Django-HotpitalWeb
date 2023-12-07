@@ -7,6 +7,9 @@ from django.contrib import messages
 def home(request):
     return render(request,'base.html')
 
+def index(request):
+    return render(request, 'index.html')
+
 @login_required(login_url="/login")
 def add_drug(request):
     context = {"drug_type" : d_type.objects.all()}
