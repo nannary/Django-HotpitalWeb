@@ -91,7 +91,7 @@ def increase_drug(request,pk):
 def decrease_drug(request,pk):
     print (pk)
     table = drug.objects.get(drug_id=pk)
-    update_qty = table.drug_qty+1
+    update_qty = table.drug_qty-1
     table.drug_qty = update_qty
     table.save()
     return redirect('/manage_drug') 

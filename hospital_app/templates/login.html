@@ -7,27 +7,28 @@
       <form action="" method="POST">
         {%csrf_token%}
         <p></p>
-        <h5>เข้าสู่ระบบที่นี่</h5>
+        <h2 class="text-center">เข้าสู่ระบบที่นี่</h2>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
+            >Username</label
           >
           <input
             type="text"
             class="form-control"
             id="username"
             name="username"
+            placeholder="Username"
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
+            We'll never share your username with anyone else.
           </div>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="pwd" name="pswd" />
+          <input type="password" class="form-control" id="pwd" name="pswd" placeholder="Password" />
         </div>
-        <button type="submit" class="btn btn-dark">เข้าสู่ระบบ</button>
+        <button type="submit" class="btn btn-dark w-100">เข้าสู่ระบบ</button>
         <p><br /></p>
       </form>
     </div>
