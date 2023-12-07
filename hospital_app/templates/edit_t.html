@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid my-3 justify-content-center align-items-center shadow rounded">
+<h5>แก้ไขข้อมูลประเภทยา</h5>
+<form action="" method="POST">
+{% csrf_token %}
+ชื่อประเภทยา : <input type="text" name="type_name" value="{{type_data.type_name}}" required>
+<button type="submit" class="btn btn-success" >บันทึก</button>
+</form>
+</div>
+{% endblock %}

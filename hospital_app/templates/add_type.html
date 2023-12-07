@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<form action="" method="POST">
+{% csrf_token %}
+<h5>เพิ่มประเภทยา</h5>
+ชื่อประเภทยา : <input type="text" name="type_name" required>
+<button type="submit" class="btn btn-success" >บันทึก</button>
+</form>
+</div>
+{% endblock  %}

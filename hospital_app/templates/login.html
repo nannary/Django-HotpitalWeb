@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+<div class="container my-3 d-flex justify-content-center align-items-center shadow rounded">
+  <div class="row">
+    <div class="col">
+      <form action="" method="POST">
+        {%csrf_token%}
+        <p></p>
+        <div class="form-group">
+          <h5>เข้าสู่ระบบที่นี่</h5>
+          <div class="mb-3">
+            <label for="username" class="form-label">username : </label>
+            <input type="text" name="username" id="username" required />
+          </div>
+          <div class="mb-3">
+            <label for="pwd" class="form-label">password : </label>
+            <input type="password" name="pswd" id="pwd" required />
+          </div>
+          <button type="submit" class="btn btn-success shadow">
+            เข้าสู่ระบบ
+          </button>
+        </div>
+        <p><br /></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
