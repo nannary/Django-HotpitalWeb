@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+
+<div
+  class="container my-3 d-flex justify-content-center align-items-center shadow rounded p-3"
+>
+  <form action="" method="POST">
+    <h1>เบิกยา</h1>
+    <div class="mb-3">
+      <label for="drug_name" class="form-label">ชื่อยา</label>
+      <select class="form-select" name="drug_name">
+        {% for i in drugdata %}
+        <option value="{{i.drug_id}}">{{i.drug_name}}</option>
+        {% endfor %}
+      </select>
+      <div id="emailHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="qty_drug" class="form-label">จำนวน</label>
+      <input
+        type="number"
+        class="form-control"
+        id="qty_drug"
+        name="qty_drug"
+        min="0"
+        max="10"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">ชื่อคนเบิก</label>
+      <input
+        type="username"
+        class="form-control"
+        id="exampleInputPassword1"
+        value="{{user.username}}"
+        placeholder="{{user.username}}"
+        disabled
+      />
+    </div>
+    <button type="submit" class="btn btn-dark w-100">บันทึก</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,18 +1,19 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="container">
-<form action="" method="POST">
-{% csrf_token %}
-<h5>เพิ่มข้อมูลยา</h5>
-ชื่อยา : <input type="text" name="drug_name" required>
-ประเภท : <select name="drug_type">
-{% for i in drug_type %}
-<option value="{{i.type_id}}">{{i.type_name}}</option>
-{% endfor %}
-</select>
-จำนวน : <input type="number" name="drug_qty" required>
-วันหมดอายุ : <input type="date" name="drug_expired" required>
-<button type="submit" class="btn btn-success" >บันทึก</button>
-</form>
+{% extends "base.html" %} {% block content %}
+<div
+  class="container my-3 d-flex justify-content-center align-items-center shadow rounded p-3"
+>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <h1>เพิ่มข้อมูลยา</h1>
+    ชื่อยา : <input type="text" name="drug_name" class="form-control" required /> ประเภท :
+    <select name="drug_type" class="form-select">
+      {% for i in drug_type %}
+      <option value="{{i.type_id}}">{{i.type_name}}</option>
+      {% endfor %}
+    </select>
+    จำนวน : <input type="number" name="drug_qty" class="form-control" required /> วันหมดอายุ :
+    <input type="date" name="drug_expired" class="form-control" required />
+    <button type="submit" class="btn btn-dark mt-3 w-100">บันทึก</button>
+  </form>
 </div>
-{% endblock  %}
+{% endblock %}
