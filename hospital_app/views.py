@@ -16,9 +16,37 @@ def index(request):
 
 @login_required(login_url="/login")
 def buy_drug(request):
+    if request.method == "POST":
+        drug_id = request.POST['drug_name']
+        qty = int(request.POST['qty_drug'])
+        user = request.user
+
+        try:
+            selected_drug = drug.objects.get(drug_id=drug_id)
+
+            if selected_drug.drug_qty >= qty:
+                # เบิกยาได้
+                selected_drug.drug_qty -= qty
+                selected_drug.save()
+
+                # เพิ่มประวัติการเบิกยา
+                MedicationHistory.objects.create(
+                    drug_name=selected_drug.drug_name,
+                    quantity=qty,
+                    user=user
+                )
+
+                messages.success(request, f'เบิกยา {selected_drug.drug_name} จำนวน {qty} หน่วย เรียบร้อย!')
+            else:
+                # เบิกยาไม่ได้ เนื่องจากจำนวนยาไม่เพียงพอ
+                messages.error(request, 'เบิกยาไม่ได้ จำนวนยาไม่เพียงพอ')
+        except drug.DoesNotExist:
+            # หากยาที่ต้องการเบิกไม่มีในระบบ
+            messages.error(request, 'ยาที่ต้องการเบิกไม่มีในระบบ')
+
     table = drug.objects.all()
-    context = {"drugdata":table}
-    return render(request, 'buy_drug.html',context)
+    context = {"drugdata": table}
+    return render(request, 'buy_drug.html', context)
 
 @login_required(login_url="/login")
 def add_drug(request):
