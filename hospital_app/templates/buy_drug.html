@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 
 <div
-  class="container my-3 d-flex justify-content-center align-items-center shadow rounded p-3"
+  class="container-fluid my-3 justify-content-center align-items-center shadow rounded"
 >
   <form action="" method="POST">
     <h1>เบิกยา</h1>
@@ -12,9 +12,6 @@
         <option value="{{i.drug_id}}">{{i.drug_name}}</option>
         {% endfor %}
       </select>
-      <div id="emailHelp" class="form-text">
-        We'll never share your email with anyone else.
-      </div>
     </div>
     <div class="mb-3">
       <label for="qty_drug" class="form-label">จำนวน</label>
@@ -38,7 +35,7 @@
         disabled
       />
     </div>
-    <button type="submit" class="btn btn-dark w-100">บันทึก</button>
+    <button type="submit" class="btn btn-dark w-100 mb-3">บันทึก</button>
   </form>
 </div>
 {% endblock %}

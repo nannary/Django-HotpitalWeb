@@ -10,6 +10,7 @@ def home(request):
 def index(request):
     return render(request, 'index.html')
 
+@login_required(login_url="/login")
 def buy_drug(request):
     table = drug.objects.all()
     context = {"drugdata":table}
@@ -109,7 +110,7 @@ def custom_login(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Login successful!')
-            return redirect('/manage_drug')
+            return redirect('/')
         else:
             messages.error(request, 'Login failed. Please check your credentials.')
             pass

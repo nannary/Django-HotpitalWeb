@@ -1,19 +1,31 @@
 {% extends "base.html" %} {% block content %}
 <div
-  class="container my-3 d-flex justify-content-center align-items-center shadow rounded p-3"
+  class="container-fluid my-3 justify-content-center align-items-center shadow rounded"
 >
   <form action="" method="POST">
     {% csrf_token %}
     <h1>เพิ่มข้อมูลยา</h1>
-    ชื่อยา : <input type="text" name="drug_name" class="form-control" required /> ประเภท :
-    <select name="drug_type" class="form-select">
-      {% for i in drug_type %}
-      <option value="{{i.type_id}}">{{i.type_name}}</option>
-      {% endfor %}
-    </select>
-    จำนวน : <input type="number" name="drug_qty" class="form-control" required /> วันหมดอายุ :
+    <div class="mb-3">
+      ชื่อยา 
+      <input type="text" name="drug_name" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      ประเภท 
+      <select name="drug_type" class="form-select">
+        {% for i in drug_type %}
+        <option value="{{i.type_id}}">{{i.type_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+    จำนวน 
+    <input type="number" name="drug_qty" class="form-control" required />
+    </div>
+    <div class="mb-3">
+    วันหมดอายุ
     <input type="date" name="drug_expired" class="form-control" required />
-    <button type="submit" class="btn btn-dark mt-3 w-100">บันทึก</button>
+    </div>
+    <button type="submit" class="btn btn-dark w-100 mb-3">บันทึก</button>
   </form>
 </div>
 {% endblock %}

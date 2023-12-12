@@ -1,12 +1,15 @@
 {% extends "base.html" %} {% block content %}
 <div
-  class="container my-3 d-flex justify-content-center align-items-center shadow rounded p-3"
+  class="container-fluid my-3 justify-content-center align-items-center shadow rounded"
 >
   <form action="" method="POST">
     {% csrf_token %}
     <h1>เพิ่มประเภทยา</h1>
-    ชื่อประเภทยา : <input type="text" name="type_name" class="form-control" required />
-    <button type="submit" class="btn btn-dark mt-3 w-100">บันทึก</button>
+    <div class="mb-3">
+      ชื่อประเภทยา 
+      <input type="text" name="type_name" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-dark w-100 mb-3">บันทึก</button>
   </form>
 </div>
 {% endblock %}
