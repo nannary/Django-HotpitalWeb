@@ -8,7 +8,10 @@ def home(request):
     return render(request,'base.html')
 
 def index(request):
-    return render(request, 'index.html')
+    drugs = drug.objects.all()
+    drug_types = d_type.objects.all()
+    context = {"drugs": drugs, "drug_types": drug_types}
+    return render(request, 'index.html', context)
 
 @login_required(login_url="/login")
 def buy_drug(request):

@@ -4,6 +4,7 @@
   class="container my-3 d-flex justify-content-center align-items-center shadow rounded p-3"
 >
   <div class="row">
+    {% for drug in drugs %}
     <div class="col">
       <div class="card" style="width: 18rem">
         <img
@@ -12,51 +13,17 @@
           alt="..."
         />
         <div class="card-body">
-          <h5 class="card-title">Card title 1</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+          <h5 class="card-title">{{ drug.drug_name }}</h5>
+          <p class="card-text text-secondary">
+            ประเภท : {{drug.drug_type}}
+            <br>
+            วันหมดอายุ : {{drug.drug_exp}}
           </p>
           <a href="#" class="btn btn-dark">Go somewhere</a>
         </div>
       </div>
     </div>
-
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZHJ1Z3xlbnwwfHwwfHx8MA%3D%3D"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title 2</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-dark">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZHJ1Z3xlbnwwfHwwfHx8MA%3D%3D"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title 3</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-dark">Go somewhere</a>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </div>
 

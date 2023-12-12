@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('', views.index),  # เพิ่ม path นี้เพื่อชี้ไปยัง index.html
+    path('', views.index, name='index'),
     path('buy_drug',views.buy_drug),
     path('add_drug',views.add_drug),
     path('add_type',views.add_type),
