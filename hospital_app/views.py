@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
 # Create your views here.
 def home(request):
     return render(request,'base.html')
@@ -112,10 +113,10 @@ def custom_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, 'Login successful!')
+            messages.success(request, 'เข้าสู่ระบบสำเร็จ!')
             return redirect('/')
         else:
-            messages.error(request, 'Login failed. Please check your credentials.')
+            messages.error(request, 'เข้าสู่ระบบผิดพลาด. โปรดตรวจสอบข้อมูลของคุณอีกครั้ง.')
             pass
     return render(request, 'login.html')
 
@@ -136,7 +137,32 @@ def addmember(request):
         # สร้างผู้ใช้ในฐานข้อมูล
         user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
 
-        messages.success(request, 'User created successfully!')
+        messages.success(request, 'สมัครสมาชิกสำเร็จ !')
         return redirect('/')
     
     return render(request, 'addmember.html')
+
+@login_required(login_url="/login")
+def edit_profile(request):
+    # ดึงข้อมูลผู้ใช้ปัจจุบัน
+    user = request.user
+
+    if request.method == "POST":
+        # อัปเดตข้อมูลที่ผู้ใช้แก้ไข
+        user.username = request.POST['username']
+        user.email = request.POST['email']
+        user.first_name = request.POST['firstname']
+        user.last_name = request.POST['lastname']
+
+        # ถ้ามีการกรอกรหัสผ่านใหม่
+        new_password = request.POST['pswd']
+        if new_password:
+            user.set_password(new_password)
+
+        user.save()
+        messages.success(request, 'แก้ไขข้อมูลส่วนตัวสำเร็จ !')
+        return redirect('/')
+
+    # ส่งข้อมูลผู้ใช้ไปยังหน้าแก้ไข
+    context = {"user_data": user}
+    return render(request, 'edit_profile.html', context)
