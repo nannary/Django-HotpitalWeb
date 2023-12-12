@@ -18,4 +18,5 @@ urlpatterns = [
     path('addmember', views.addmember, name='addmember'),
     path('edit_profile', views.edit_profile, name='edit_profile'),
     path('medication_history/', views.view_medication_history, name='medication_history'),
+    path('view_own_medication_history/', views.view_own_medication_history, name='view_own_medication_history'),
 ]

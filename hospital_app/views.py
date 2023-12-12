@@ -200,3 +200,11 @@ def view_medication_history(request):
     medication_history = MedicationHistory.objects.all()
     context = {"medication_history": medication_history}
     return render(request, 'medication_history.html', context)
+
+# ประวัติการเบิกยาของคุณ
+@login_required(login_url="/login")
+def view_own_medication_history(request):
+    user = request.user
+    medication_history = MedicationHistory.objects.filter(user=user)
+    context = {"medication_history": medication_history}
+    return render(request, 'own_medication_history.html', context)

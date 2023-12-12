@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+<div
+  class="container-fluid my-3 justify-content-center align-items-center shadow rounded"
+>
+    <h1>ประวัติการเบิกยาของคุณ</h1>
+
+    <div class="row">
+      {% for record in medication_history %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-primary">{{ record.drug_name }}</h5>
+            <p class="card-text">จำนวน: {{ record.quantity }}</p>
+            <p class="card-text">ผู้ใช้: {{ record.user.username }}</p>
+            <p class="card-text">วันที่: {{ record.date }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% endblock %}
+</div>
