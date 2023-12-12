@@ -194,3 +194,9 @@ def edit_profile(request):
     # ส่งข้อมูลผู้ใช้ไปยังหน้าแก้ไข
     context = {"user_data": user}
     return render(request, 'edit_profile.html', context)
+
+# ประวัติการเบิกยาทั้งหมด
+def view_medication_history(request):
+    medication_history = MedicationHistory.objects.all()
+    context = {"medication_history": medication_history}
+    return render(request, 'medication_history.html', context)

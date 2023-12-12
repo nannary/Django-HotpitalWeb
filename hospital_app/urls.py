@@ -17,4 +17,5 @@ urlpatterns = [
     path('logout',views.logout_view),
     path('addmember', views.addmember, name='addmember'),
     path('edit_profile', views.edit_profile, name='edit_profile'),
+    path('medication_history/', views.view_medication_history, name='medication_history'),
 ]
